@@ -1,16 +1,19 @@
 package com.example.tabling.model;
-import java.persistence.*;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
+    @Column(nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long memberNumber;
 
     @Column
     private String password;
