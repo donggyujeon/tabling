@@ -9,23 +9,20 @@ import lombok.Data;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-
-    @Column(nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long memberNumber;
-
-    @Column
-    private String password;
-
-    @Column(nullable = false, unique = true)
-    private String username;
+    private String userId;
 
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private String username;
+
     @Column
     private String number;
 
-    private LocalDateTime createDate;
+    @Column(name = "joinDate") @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime joinDate = LocalDateTime.now();
 }
